@@ -7,7 +7,7 @@ $(document).ready(function() {
      */
     var click = function(elt) {
         var element = elt.get(0);
-        if (!elt) {
+        if (!elt.length) {
             return;
         }
         var dispatchMouseEvent = function(target, var_args) {
@@ -23,18 +23,37 @@ $(document).ready(function() {
         dispatchMouseEvent(element, 'mouseup', true, true);
     };
 
-    // Assignee box keyboard shortcut
     $(document).bind('keypress', 'a', function() {
+        // Assignee box keyboard shortcut
         click($('.js-assignee-context.js-menu-target'));
         $('.js-assignee-context .filterbar input').focus().val('');
+
+        // Tasks "assigned to you"
+        click($('.sidebar a').filter(function() { 
+            return $(this).attr('href').indexOf('/assigned/') !== -1; 
+        }));
+
         return false;
     });
 
-    // Milestone box keyboard shortcut
     $(document).bind('keypress', 't', function() {
+        // Milestone box keyboard shortcut
         click($('.js-milestone-context.js-menu-target'));
         $('.js-filterable-milestones .js-placeholder-field input').focus().val('');
+
+        // Tasks "mentioning you"
+        click($('.sidebar a').filter(function() { 
+            return $(this).attr('href').indexOf('/mentioned/') !== -1; 
+        }));
+
         return false;
+    });
+
+    $(document).bind('keypress', 'u', function() {
+        // All Tasks
+        click($('.sidebar a').filter(function() { 
+            return $(this).attr('href').indexOf('/issues/') === -1; 
+        }));
     });
 
 });
