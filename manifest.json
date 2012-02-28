@@ -1,0 +1,18 @@
+{
+    "name": "Github Keyboard Extensions",
+    "version": "1.0",
+    "description": "Add more keyboard shortcuts to Github Issues.",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "popup": "popup.html"
+    },
+    "permissions": [
+        "http://api.flickr.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://github.com/*"],
+            "js": ["jquery.js", "jquery.hotkeys.js", "keyboard.js"]
+        }
+    ]
+}
