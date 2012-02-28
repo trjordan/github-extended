@@ -7,6 +7,9 @@ $(document).ready(function() {
      */
     var click = function(elt) {
         var element = elt.get(0);
+        if (!elt) {
+            return;
+        }
         var dispatchMouseEvent = function(target, var_args) {
             var e = document.createEvent("MouseEvents");
             // If you need clientX, clientY, etc., you can call
