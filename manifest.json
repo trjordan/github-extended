@@ -6,9 +6,6 @@
         "default_icon": "icon.png",
         "popup": "popup.html"
     },
-    "permissions": [
-        "http://api.flickr.com/"
-    ],
     "content_scripts": [
         {
             "matches": ["https://github.com/*"],
