@@ -1,7 +1,7 @@
 $(document).ready(function() {
     /**
      * Define a function that reliably clicks things, like a human.
-     * 
+     *
      * With advice:
      *   http://stackoverflow.com/questions/4158847/is-there-a-way-to-simulate-key-presses-or-a-click-with-javascript
      */
@@ -29,8 +29,8 @@ $(document).ready(function() {
         $('.js-assignee-context .filterbar input').focus().val('');
 
         // Tasks "assigned to you"
-        click($('.sidebar a').filter(function() { 
-            return $(this).attr('href').indexOf('/assigned/') !== -1; 
+        click($('.sidebar a').filter(function() {
+            return $(this).attr('href').indexOf('/assigned/') !== -1;
         }));
 
         return false;
@@ -42,8 +42,8 @@ $(document).ready(function() {
         $('.js-filterable-milestones .js-placeholder-field input').focus().val('');
 
         // Tasks "mentioning you"
-        click($('.sidebar a').filter(function() { 
-            return $(this).attr('href').indexOf('/mentioned/') !== -1; 
+        click($('.sidebar a').filter(function() {
+            return $(this).attr('href').indexOf('/mentioned/') !== -1;
         }));
 
         return false;
@@ -51,9 +51,14 @@ $(document).ready(function() {
 
     $(document).bind('keypress', 'u', function() {
         // All Tasks
-        click($('.sidebar a').filter(function() { 
-            return $(this).attr('href').indexOf('/issues/') === -1; 
+        click($('.sidebar a').filter(function() {
+            return $(this).attr('href').indexOf('/issues/') === -1;
         }));
+    });
+
+    $(document).bind('keypress', 'n', function() {
+        // Notifications
+        window.location = '/inbox/notifications';
     });
 
 });
